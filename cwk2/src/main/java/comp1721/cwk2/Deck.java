@@ -50,6 +50,34 @@ public class Deck extends CardCollection {
         return cards.contains(card);
     }
 
+    /**
+     * Discard the deck.
+     */
+    public void discard() {
+        cards.clear();
+    }
 
+    /**
+     * Deal the deck, remove first card in the deck
+     *
+     * @return the card dealt from deck.
+     * @throws CardException if the deck is empty
+     */
+    public Card deal() throws CardException {
+        if (cards.size() > 0) {
+            Card card = cards.get(0);
+            cards.remove(0);
+            return card;
+        } else {
+            throw new CardException("Empty deal");
+        }
+    }
+
+    /**
+     * Shuffle the deck.
+     */
+    public void shuffle() {
+        Collections.shuffle(cards);
+    }
 
 }
